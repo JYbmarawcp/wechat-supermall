@@ -1,10 +1,19 @@
-/**app.wxss**/
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
+@import "./styles/iconfont.wxss";
+
+/* 小程序中 不支持通配符 */
+page,view,text,swiper,swiper-item,image,navigator{
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
-} 
+}
+
+/* 主题颜色 通过变量来实现 */
+page{
+  /* 定义主题颜色 */
+  --themeColor: #eb4450;
+  /* 定义统一字体的大小 假设设计稿大小是375px 
+    1px = 2rpx
+    14px = 28rpx
+  */
+  font-size: 28rpx;
+}

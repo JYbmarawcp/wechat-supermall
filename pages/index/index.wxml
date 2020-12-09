@@ -1,13 +1,58 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view>
+  <!-- 搜索框 -->
+  <SearchInput></SearchInput>
+  <!-- 轮播图 -->
+  <view class="index_swiper">
+    <!-- 
+      swiper存在默认宽高（100% 150px）、
+      image标签也存在默认的宽高（320px 240px)
+      原图的宽高是750 * 340
+      1.让图片的高度自适应 宽度100%
+      2.让swiper标签的高度 变成和图片的高一样即可
+    -->
+    <swiper autoplay circular indicator-dots>
+      <swiper-item
+        wx:for="{{bannerList}}"
+        wx:key="goods_id"
+      >
+        <navigator>
+          <image mode="widthFix" src="{{item.image_src}}" />
+        </navigator>
+      </swiper-item>
+    </swiper>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <!-- 导航栏 -->
+  <view class="index_cate">
+    <navigator
+      wx:for="{{cateList}}"
+      wx:key="name"
+    >
+      <image mode="widthFix" src="{{item.image_src}}" />
+    </navigator>
   </view>
+  <!-- 楼层 -->
+  <view class="index_floor">
+    <view class="floor_group"
+      wx:for="{{floorList}}"
+      wx:for-item="item"
+      wx:for-index="index1"
+      wx:key="floor_title"
+    >
+       <view class="floor_title">
+         <image class="" src="{{item.floor_title.image_src}}" mode="widthFix" />
+       </view>
+        <view class="floor_list">
+          <navigator
+            wx:for="{{item.product_list}}"
+            wx:for-item="product"
+            wx:for-index="index2"
+            wx:key="name"
+          >
+            <image src="{{product.image_src}}" mode="{{index2 === 0 ? 'widthFix': 'scaleToFill'}}" />
+          </navigator>
+        </view>
+    </view>
+  </view>
+    
 </view>
+  
