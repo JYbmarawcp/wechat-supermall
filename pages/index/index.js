@@ -9,9 +9,9 @@ Page({
   // 页面开始加载就会触发
   onLoad: function(options) {
     // 发送请求 优化的手段为promise
-    this.getBannerList()
-    this.getCateList()
-    this.getFloorList()
+    this.getBannerList();
+    this.getCateList();
+    this.getFloorList();
   },
   getBannerList() {
     request({
