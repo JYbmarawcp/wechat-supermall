@@ -15,28 +15,28 @@ Page({
   },
   getBannerList() {
     request({
-      url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
+      url: '/home/swiperdata',
     }).then(result => {
       this.setData({
-        bannerList: result.data.message
+        bannerList: result
       })
     })
   },
   getCateList() {
     request({
-      url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/catitems',
+      url: '/home/catitems',
     }).then(result => {
       this.setData({
-        cateList: result.data.message
+        cateList: result
       })
     })
   },
   getFloorList() {
     request({
-      url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/floordata',
+      url: '/home/floordata',
     }).then(result => {
       this.setData({
-        floorList: result.data.message
+        floorList: result
       })
     })
   },

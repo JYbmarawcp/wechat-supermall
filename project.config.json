@@ -6,7 +6,7 @@
   "setting": {
     "urlCheck": true,
     "es6": true,
-    "enhance": false,
+    "enhance": true,
     "postcss": true,
     "preloadBackgroundData": false,
     "minified": true,
@@ -63,6 +63,13 @@
         {
           "name": "分类页面",
           "pathName": "pages/category/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "商品列表",
+          "pathName": "pages/goods_list/index",
+          "query": "cid=5",
           "scene": null
         }
       ]
