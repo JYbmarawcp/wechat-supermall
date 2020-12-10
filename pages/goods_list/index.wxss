@@ -21,7 +21,6 @@
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
   -webkit-line-clamp: 2;
 }
 .first_tab .goods_item .goods_info_wrap .goods_price {
