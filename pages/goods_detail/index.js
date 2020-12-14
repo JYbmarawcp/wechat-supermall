@@ -45,6 +45,7 @@ Page({
     if (index === -1) {
       // 不存在 第一次添加
       this.GoodInfo.num = 1;
+      this.GoodInfo.checked = true;
       cart.push(this.GoodInfo);
     } else {
       cart[index].num++;
