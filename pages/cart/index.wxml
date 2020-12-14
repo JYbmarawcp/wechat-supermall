@@ -13,7 +13,7 @@
       <view class="phone">{{address.telNumber}}</view>
     </view>
     <view>
-      {{address.provinceName + address.cityName + address.countyName + address.detailInfo}}
+      {{address.all}}
     </view>
   </view>
 </view>

@@ -15,8 +15,9 @@ Page({
   },
   handleChooseAddress() {
     wx.chooseAddress({
-      success: (result) => {
-        wx.setStorageSync("address", result);
+      success: (address) => {
+        address.all = address.provinceName + address.cityName + address.countyName + address.detailInfo;
+        wx.setStorageSync("address", address);
       }
     });
   },

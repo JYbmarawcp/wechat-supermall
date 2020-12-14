@@ -89,6 +89,12 @@
           "pathName": "pages/pay/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "支付授权",
+          "pathName": "pages/auth/index",
+          "query": "",
+          "scene": null
         }
       ]
     }
