@@ -1,9 +1,10 @@
 <view class="user_info_wrap">
-  <view wx:if="{{}}" class="uer_img_wrap">
-    <image class="user_bg" src="" mode="widthFix" />
+  <view wx:if="{{userinfo.avatarUrl}}" class="uer_img_wrap">
+    <image class="user_bg2" src="{{userinfo.avatarUrl}}" />
+    <image class="user_bg1" src="{{userinfo.avatarUrl}}" />
     <view class="user_info">
-      <image class="iser-icon" src="" />
-      <view class="user_name"></view>
+      <image class="iser_icon" src="{{userinfo.avatarUrl}}" />
+      <view class="user_name">{{userinfo.nickName}}</view>
     </view>
   </view>
   <view wx:else class="user_btn">
@@ -22,7 +23,7 @@
         <view class="his_name">收藏的店铺</view>
       </navigator>
       <navigator url="/pages/collect/index">
-        <view class="his_num">{{}}</view>
+        <view class="his_num">{{0}}</view>
         <view class="his_name">收藏的商品</view>
       </navigator>
       <navigator>
@@ -42,15 +43,15 @@
           <view class="iconfont icon-ding_dan"></view>
           <view class="order_name">全部订单</view>
         </navigator>
-        <navigator url="/pages/order/index?type=1">
+        <navigator url="/pages/order/index?type=2">
           <view class="iconfont icon-fukuantongzhi"></view>
           <view class="order_name">待付款</view>
         </navigator>
-        <navigator url="/pages/order/index?type=1">
+        <navigator url="/pages/order/index?type=3">
           <view class="iconfont icon-receipt-address"></view>
           <view class="order_name">待收货</view>
         </navigator>
-        <navigator url="/pages/order/index?type=1">
+        <navigator>
           <view class="iconfont icon-tuihuotuikuan_dianpu"></view>
           <view class="order_name">退款/退货</view>
         </navigator>
@@ -60,7 +61,7 @@
     <view class="address_wrap">收获地址管理</view>
     <!-- 应用信息相关 -->
     <view class="app_info_wrap">
-      <view class="app_info_item">
+      <view class="app_info_item app_info_contact">
         <text>联系客服</text>
         <text>18767183600</text>
       </view>

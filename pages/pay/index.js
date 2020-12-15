@@ -73,9 +73,16 @@ Page({
         header,
         data: {order_number}
       })
-      await showToast({title: "支付成功"})
+      await showToast({title: "支付成功"});
+      // 删除缓存
+      let newCart = wx.getStorageSync("cart");
+      newCart = newCart.filter(v => !v.checked);
+      wx.setStorageSync("cart", newCart);
+      wx.navigateTo({
+        url: '/pages/order/index'
+      });
     } catch (error) {
-      await showToast({title: "支付失败"})
+      await showToast({title: "支付失败"});
       console.log(error);
     }
   }
