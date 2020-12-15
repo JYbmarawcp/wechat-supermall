@@ -2,7 +2,7 @@
   onShow
   (onShow无法在形参上接收options参数)
   获取url上的参数type
-  发请求
+  决定tabs哪个被激活 发请求
 */
 import { request } from "../../request/index"
 Page({
@@ -41,9 +41,11 @@ Page({
     }
     // 获取当前小程序的页面栈 长度最大是10页面
     let pages = getCurrentPages();
-    let currentPages = pages[pages.length-1]
-    const {type} = currentPages.options
-    this.getOrders(type)
+    let currentPages = pages[pages.length-1];
+    const {type} = currentPages.options;
+    // 激活选中的页面
+    this.changeTitleByIndex(type-1);
+    this.getOrders(type);
   },
   // 获取订单列表
   async getOrders(type) {
@@ -52,15 +54,23 @@ Page({
       data: {type}
     });
     this.setData({
-      orders: res.orders
+      orders: res.orders.map(v => ({
+        ...v,
+        create_time_cn: new Date(v.create_time * 1000).toLocaleString()
+      }))
     })
   },
-  handleTabsItemChange(e) {
-    const { index } = e.detail;
+  changeTitleByIndex(index) {
     let {tabs} = this.data;
     tabs.forEach((v,i) => i===index? v.isActive = true: v.isActive = false);
     this.setData({
       tabs
     })
+  },
+  handleTabsItemChange(e) {
+    const { index } = e.detail;
+    this.changeTitleByIndex(index);
+    // 重新发请求 type = 1; index = 0
+    this.getOrders(index+1);
   },
 })
