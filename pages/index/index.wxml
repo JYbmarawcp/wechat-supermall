@@ -15,7 +15,7 @@
         wx:for="{{bannerList}}"
         wx:key="goods_id"
       >
-        <navigator>
+        <navigator url="{{item.navigator_url}}">
           <image mode="widthFix" src="{{item.image_src}}" />
         </navigator>
       </swiper-item>
@@ -24,6 +24,8 @@
   <!-- 导航栏 -->
   <view class="index_cate">
     <navigator
+      url="/pages/category/index"
+      open-type="switchTab"
       wx:for="{{cateList}}"
       wx:key="name"
     >
@@ -43,6 +45,7 @@
        </view>
         <view class="floor_list">
           <navigator
+            url="{{product.navigator_url}}"
             wx:for="{{item.product_list}}"
             wx:for-item="product"
             wx:for-index="index2"

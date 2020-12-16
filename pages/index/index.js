@@ -17,6 +17,7 @@ Page({
     request({
       url: '/home/swiperdata',
     }).then(result => {
+      result.forEach(v=> v.navigator_url = v.navigator_url.replace('main', 'index'));
       this.setData({
         bannerList: result
       })
@@ -35,6 +36,11 @@ Page({
     request({
       url: '/home/floordata',
     }).then(result => {
+      result.forEach(v=> v.product_list.forEach(item => {
+        let navigator_url = item.navigator_url.split("?");
+        navigator_url = navigator_url[0] + "/index?" + navigator_url[1];
+        item.navigator_url = navigator_url;
+      }));
       this.setData({
         floorList: result
       })
